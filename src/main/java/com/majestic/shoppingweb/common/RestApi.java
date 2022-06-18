@@ -45,20 +45,20 @@ public class RestApi {
         log.info("targetUri :::::: " + targetUri);
         JSONObject param = new JSONObject();
 
-        param.put("email",map.get("email").get(0));
-        param.put("password",map.get("password").get(0));
-        param.put("username",map.get("username").get(0));
+        param.put("email", map.get("email").get(0));
+        param.put("password", map.get("password").get(0));
+        param.put("username", map.get("username").get(0));
 
         // 기존
         // HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(map,httpHeaders);
 
-        HttpEntity<?> request = new HttpEntity<>(param,httpHeaders);
+        HttpEntity<?> request = new HttpEntity<>(param, httpHeaders);
 
 
         // 기존
         // ResponseEntity<String> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request, String.class);
 
-        ResponseEntity<JSONObject> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request,JSONObject.class);
+        ResponseEntity<JSONObject> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request, JSONObject.class);
 
         log.info("resultStr :::::: " + resultStr);
 
@@ -79,9 +79,9 @@ public class RestApi {
 
         log.info("param 2222222222 :::::: " + param);
 
-        HttpEntity<?> request = new HttpEntity<>(param,httpHeaders);
+        HttpEntity<?> request = new HttpEntity<>(param, httpHeaders);
 
-        ResponseEntity<JSONObject> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request,JSONObject.class);
+        ResponseEntity<JSONObject> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request, JSONObject.class);
 
         log.info("resultStr 2222222  :::::: " + resultStr);
 
@@ -98,7 +98,7 @@ public class RestApi {
 
         URI targetUri = UriComponentsBuilder.fromHttpUrl(apiServerUrl + url).build().toUri();
 
-        HttpEntity<String> request = new HttpEntity<>(writeValueAsString,httpHeaders);
+        HttpEntity<String> request = new HttpEntity<>(writeValueAsString, httpHeaders);
         log.info("request 33333  :::::: " + request);
 
         ResponseEntity<String> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request, String.class);
@@ -108,5 +108,27 @@ public class RestApi {
 
         return result;
 
+    }
+
+    public Map<String, Object> api4(Map<String, Object> param, String url) {
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        //httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+        log.info("url 44444444444 :::::: " + apiServerUrl + url);
+        URI targetUri = UriComponentsBuilder.fromHttpUrl(apiServerUrl + url).build().toUri();
+
+        log.info("param 444444444 :::::: " + param);
+
+        HttpEntity<Map<String, Object>> request = new HttpEntity<>(param, httpHeaders);
+
+        ResponseEntity<String> resultStr = restTemplate.exchange(targetUri, HttpMethod.POST, request, String.class);
+
+        log.info("resultStr 444444444  :::::: " + resultStr);
+
+        Map<String, Object> result = new HashMap<>();
+
+        return result;
     }
 }

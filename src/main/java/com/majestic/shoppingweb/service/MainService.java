@@ -32,10 +32,10 @@ public class MainService {
         //multiMap.add("password", "1234");
         //multiMap.add("username", "3jwh@email.com");
         Map<String, Object> param = new HashMap<>();
-        param.put("email","3jwh@email.com");
-        param.put("password","1234");
-        param.put("username","3jwh@email.com");
-        multiMap.add("memberRequestDto",param );
+        param.put("email", "3jwh@email.com");
+        param.put("password", "1234");
+        param.put("username", "3jwh@email.com");
+        multiMap.add("memberRequestDto", param);
 
         String url = "/auth/login";
 
@@ -53,8 +53,10 @@ public class MainService {
         // 버전2
         //Map<String, Object> map = restApi.api2(param, url);
         // 버전3
-        Map<String, Object> map = restApi.api3(objectMapper.writeValueAsString(multiMap.get("memberRequestDto").get(0)), url);
+        //Map<String, Object> map = restApi.api3(objectMapper.writeValueAsString(multiMap.get("memberRequestDto").get(0)), url);
 
+        //버전4
+        Map<String, Object> map = restApi.api4(param, url);
 
 
         // 메소드 만들기 RESTAPI
